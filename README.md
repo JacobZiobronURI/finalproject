@@ -28,12 +28,12 @@ Information about algorithm.
 Merge sort is an O(nlogn) divide and conquer algorithm. In order to achieve a faster runtime, this algorithm follows these methods:
 > 1. Dividing the n-element sequence to be sorted into two subsequences of n/2 elements each
 2. Sorting the two subsequences recursively by re-applying merge sort
-3. Merging the two sorted subsequences to produce the sorted answer.
+3. Merging the two sorted subsequences to produce the sorted answer.<
 
 This divide-and-conquer paradigm involes three steps at each level of recursion:
 > 1. Divide the problem into a number of subproblems that are smaller instances of the same problem.
 2. Conquer the subprograms by solving them recursively. If the subproblem sizes are small enough, however, just solve the subproblems in a straightforward manner.
-3. Combine the solutions to the subproblems into the solution for the original problem.
+3. Combine the solutions to the subproblems into the solution for the original problem. <
 
 *Description provided by "Introduction To ALGORITHMS" by Cormen et al. (2009)*
 
