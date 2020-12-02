@@ -8,14 +8,14 @@ Tuyetinh Nguyen
 
 ## Introduction
 
-This Team was charged with the task of implementing three different sorting algorithms from CSC 212 and an additional
-new one. The three sorting algorithms from class are insertion sort, mergesort, and quicksort. The new algorithm is
-called gradix sort. This project's purpose is to benchmark these algorithms to compare them to each other to
+This team was charged with the task of implementing three different sorting algorithms from CSC 212 and an additional
+new one. The three given sorting algorithms from class are insertion sort, mergesort, and quicksort. The new algorithm is
+called radix sort. This project's purpose is to implement and anlyze these algorithms and compare them to each other to
 determine which one has the fastest runtime, the slowest runtime, and their efficiency based on differences in
-sequence size and type. A greater purpose of this project is to prepare this Team for future employment by
-modeling what project development in a company setting might look like. From day one this Team has scheduled
+sequence size and type. A greater purpose of this project is to prepare this team for future employment by
+modeling what project development in a company setting might look like. From day one, this team has scheduled
 weekly plans and objectives that move us closer to project completion. This project process is another step
-in preparing the Team for jobs after college.
+in preparing the team members for jobs after college.
 
 ## Methods
 
@@ -43,23 +43,23 @@ Describe work, include plots/figures if necessary
 
 ### Jacob
 
--collaborated on SCRUM wkst
+- collaborated on SCRUM wkst
 
 #### Algorithms*
 
--quicksort
+- quicksort
 
 ### Leslie
 
--collaborated on SCRUM wkst
+- collaborated on SCRUM wkst
 
 #### Algorithms*
 
--mergesort
+- mergesort
 
 ### Tuyetlinh
 
--collaborated on SCRUM wkst
+- collaborated on SCRUM wkst
 
 #### Algorithms*
 
@@ -67,9 +67,9 @@ Describe work, include plots/figures if necessary
 
 ###### Note
 
-*Algorithms (except bubble, which was a collaborative effort) was initially an individual’s projects,
-but after completing (or if someone hit a bug), all Team members checked, debugged, improved/refined
-each other’s programs as a group
+*All algorithms (except radix sort, which was a collaborative effort) were initially an individual’s projects,
+but after completiion, or if a problem was encountered, all other team members checked, debugged, and refined
+each other’s programs as a group to produce a project to this best of our combined abilities.
 
 
 
