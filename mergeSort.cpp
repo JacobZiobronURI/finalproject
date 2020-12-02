@@ -12,7 +12,8 @@
 
 void print(std::vector<int> v)
 {
-  for(unsigned int i = 0; i < v.size(); i++)
+  //prints vector
+    for(unsigned int i = 0; i < v.size(); i++)
   std::cout << v[i] << " ";
   std::cout << '\n';
 }
@@ -22,19 +23,22 @@ std::vector<int> merge(std::vector<int> left, std::vector<int> right)
    std::vector<int> result;
    while ((int)left.size() > 0 || (int)right.size() > 0) {
       if ((int)left.size() > 0 && (int)right.size() > 0) {
+          //checks which element out of the two lists is smaller or greater
          if ((int)left.front() <= (int)right.front()) {
+             //places it in appropriate index
             result.push_back((int)left.front());
+             //erases elements that have been looked at
             left.erase(left.begin());
          }
    else {
             result.push_back((int)right.front());
             right.erase(right.begin());
          }
-      }  else if ((int)left.size() > 0) {
+      }  else if ((int)left.size() > 0) { //if right list is already finished continue looking at left
             for (int i = 0; i < (int)left.size(); i++)
                result.push_back(left[i]);
             break;
-      }  else if ((int)right.size() > 0) {
+      }  else if ((int)right.size() > 0) { //vice versa
             for (int i = 0; i < (int)right.size(); i++)
                result.push_back(right[i]);
             break;
@@ -45,22 +49,31 @@ std::vector<int> merge(std::vector<int> left, std::vector<int> right)
 
 std::vector<int> mergeSort(std::vector<int> m)
 {
-   if (m.size() <= 1)
+   //if no more elements, return vector
+    if (m.size() <= 1)
       return m;
 
-   std::vector<int> left, right, result;
+   //indicates what part of the list is being worked on
+    std::vector<int> left, right, result;
+    
+    //finds middle spot of the vector
    int middle = ((int)m.size()+ 1) / 2;
 
-   for (int i = 0; i < middle; i++) {
+   //loops through to create a sorted left list
+    for (int i = 0; i < middle; i++) {
       left.push_back(m[i]);
    }
 
-   for (int i = middle; i < (int)m.size(); i++) {
+   //loops through to create a sorted right list
+    for (int i = middle; i < (int)m.size(); i++) {
       right.push_back(m[i]);
    }
 
-   left = mergeSort(left);
+   //recursive calls to sort the two lists
+    left = mergeSort(left);
    right = mergeSort(right);
+    
+    //call to merge the two
    result = merge(left, right);
 
    return result;
