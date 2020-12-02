@@ -47,7 +47,7 @@ Describe work, include plots/figures if necessary
 
   #### Algorithms*
 
-- quicksort
+  - quicksort
 
 ### Leslie
 
@@ -55,7 +55,7 @@ Describe work, include plots/figures if necessary
 
   #### Algorithms*
 
-- mergesort
+  - mergesort
 
 ### Tuyetlinh
 
@@ -63,7 +63,7 @@ Describe work, include plots/figures if necessary
 
   #### Algorithms*
 
-- insertion sort algorithm
+  - insertion sort algorithm
 
 ###### Note
 
