@@ -43,15 +43,29 @@ Describe work, include plots/figures if necessary
 
 ### Jacob
 
+-collaborated on SCRUM wkst
+
 #### Algorithms*
+
+-quicksort
 
 ### Leslie
 
+-collaborated on SCRUM wkst
+
 #### Algorithms*
+
+-mergesort
 
 ### Tuyetlinh
 
+-collaborated on SCRUM wkst
+
 #### Algorithms*
+
+-insertion sort algorithm
+
+###### Note
 
 *Algorithms (except bubble, which was a collaborative effort) was initially an individual’s projects,
 but after completing (or if someone hit a bug), all Team members checked, debugged, improved/refined
