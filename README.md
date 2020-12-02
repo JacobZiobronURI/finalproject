@@ -45,7 +45,7 @@ Describe work, include plots/figures if necessary
 
 - collaborated on SCRUM wkst
 
-#### Algorithms*
+  #### Algorithms*
 
 - quicksort
 
@@ -53,7 +53,7 @@ Describe work, include plots/figures if necessary
 
 - collaborated on SCRUM wkst
 
-#### Algorithms*
+  #### Algorithms*
 
 - mergesort
 
@@ -61,9 +61,9 @@ Describe work, include plots/figures if necessary
 
 - collaborated on SCRUM wkst
 
-#### Algorithms*
+  #### Algorithms*
 
--insertion sort algorithm
+- insertion sort algorithm
 
 ###### Note
 
