@@ -63,7 +63,7 @@ Describe work, include plots/figures if necessary
 
   #### Algorithms*
 
-  - insertion sort algorithm
+  - insertion sort
 
 ###### Note
 
