@@ -106,7 +106,7 @@ Describe work, include plots/figures if necessary
 ###### Note
 
 *All algorithms (except radix sort, which was a collaborative effort) were initially an individual’s projects,
-but after completiion, or if a problem was encountered, all other team members checked, debugged, and refined
+but after completion, or if a problem was encountered, all other team members checked, debugged, and refined
 each other’s programs as a group to produce a project to this best of our combined abilities.
 
 
