@@ -1,0 +1,18 @@
+Notes from Meeting with Christian
+
+download VisualStudio to avoid CS50 ide limitations
+presentation = show deep understanding of topic
+assume everyone knows basics of algorithms
+
+presenting during lab conflicts:
+- during 2 labs or thursday lecture
+- still somewhere end of next week
+
+recommended - make one program that has ability to:
+- gives ability to choose algorithm
+- user-choice for type of sort
+- classes are high recommended
+- main ends up being a few lines - take in input & run
+- the smaller main is, the better
+
+- should not be 0 seconds - especially for insertion sort
