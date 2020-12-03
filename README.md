@@ -63,12 +63,12 @@ The Quicksort algorithm (O(nlogn)) is regarded as the fastest known comparison-b
 The radix sort derives its name from the radices (similar to digits) of numbers. This is due to its method of begins by sorting input values according to its first radix, second radix and so on. This alogirthm is a multipass sort, meaning that the number of passes equals the number of radices of a lists' values. Radix sort begins by first sorting:
 
 > **Least significant digits (LSD)**
-> Where short keys come before longer keys. Keys of the same length are sorted lexicographically (alphabetically).
+- Where short keys come before longer keys. Keys of the same length are sorted lexicographically (alphabetically).
 
 Then:
 
 > **Most significant digit (MSD)**
-> Were MSD radix sorts use lexicographic order. 
+- Where MSD radix sorts use lexicographic order. 
 
 *Description provided by https://www.bogotobogo.com/Algorithms/radixsort.php*
 
