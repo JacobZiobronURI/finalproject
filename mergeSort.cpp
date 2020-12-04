@@ -55,7 +55,7 @@ std::vector<int> mergeSort(std::vector<int> m)
 
    //indicates what part of the list is being worked on
     std::vector<int> left, right, result;
-    
+
     //finds middle spot of the vector
    int middle = ((int)m.size()+ 1) / 2;
 
@@ -72,7 +72,7 @@ std::vector<int> mergeSort(std::vector<int> m)
    //recursive calls to sort the two lists
     left = mergeSort(left);
    right = mergeSort(right);
-    
+
     //call to merge the two
    result = merge(left, right);
 

@@ -17,7 +17,7 @@
       So, the combine step in quicksort does virtually nothing.
 */
 
-
+//creates a random set
 int shuffle(std::vector<int> &A, int size){
     for(int i = 0; i < size - 1; i++){
         int j = i + rand() % (size - i);
@@ -25,30 +25,15 @@ int shuffle(std::vector<int> &A, int size){
     }
     return 0;
 }
-/*
 
-algorithm to shuffle a vector
-https://www.tutorialspoint.com/how-to-shuffle-a-std-vector-in-cplusplus
-explain it later
-
-int main() {
-   vector<int> v = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-   int size = v.size();
-   for (int i = 0; i < size - 1; i++) {
-      int j = i + rand() % (size - i);
-      swap(v[i], v[j]);
-   }
-   cout<<"Elements after getting shuffled"<<endl;
-   show(v);
-   return 0;
-}
-*/
+//instead of using swap function create own to swap pointers
 void swap(int *a, int *b){
     int t = *a;
     *a = *b;
     *b = t;
 }
 
+//Splits vector A into two different parts based on pivot point
 int partition(std::vector<int> &A, int low, int high){
     int pivot = A[high];
     int i = (low-1);
@@ -64,13 +49,16 @@ int partition(std::vector<int> &A, int low, int high){
 
 void quicksort(std::vector<int> &A, int low, int high, int size){
     if(low < high){
+        //creates a partition for the quicksort to run on
         int pi = partition(A, low, high);
 
+        //runs both partitions
         quicksort(A, low, pi-1, size);
         quicksort(A, pi+1, high, size);
     }
 }
 
+//simple function to print the vector
 void printArr(std::vector<int> &A){
     for (unsigned int i = 0; i < A.size(); i++){
         std::cout << A[i] << ' ';

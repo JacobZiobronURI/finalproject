@@ -3,7 +3,7 @@
 #include <stdlib.h> // rand, srand
 #include <time.h> // time
 
-/* HOW IT WORKS:
+/* How it works:
     - based on digits - very fast sort algorithm for integers
     - "radix" is the base of the number system - decimal numbers have a base of 10
     - radix sort first orders elements based on LSD (least significant digit)
@@ -55,7 +55,7 @@ int findMax(std::vector<int> &vec){
 }
 
 // A function to do counting sort of vec based on the digit represented by exp
-// puts integers into "buckets" (similarly to hash tables) and counts # of encounters
+// puts integers into "buckets" (similar to hash tables) and counts # of encounters
 void countSort(std::vector<int> &vec, int digit){
     int count[10] = {0}; // fill count array with 0s, array size 10 bc 10 digits (0-9)
     int size = vec.size();
