@@ -14,16 +14,12 @@ class Sort
         void generatePartialSort(std::vector<int> &vec, int length);
 
         // sorting algorithms - add your sort functions (+ helper functions) here
-        void insertionSort();
-        void quickSort();
+        void insertionSort(std::vector<int> &vec);
+        void quickSort(std::vector<int> &vec, int low, int high, int size);
         // quickSort helper functions
         int shuffle(std::vector<int> &vec, int size);
         void swap(int *a, int *b);
         int partition(std::vector<int> &vec, int low, int high);
-        //if we decide to remove bubblesort just remove this
-        void bubbleSort();
-
-
 
     public:
         void sort(std::string alg); // given user inputted string of sort alg type
