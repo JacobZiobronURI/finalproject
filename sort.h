@@ -6,7 +6,7 @@
 
 class Sort
 {
-    Private:
+    private:
         // generate sequences
         void generateSorted(std::vector<int> &vec, int length);
         void generateReverse(std::vector<int> &vec, int length);
@@ -25,7 +25,7 @@ class Sort
 
 
 
-    Public:
+    public:
         void sort(std::string alg); // given user inputted string of sort alg type
 
 };
