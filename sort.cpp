@@ -77,6 +77,85 @@ void Sorter::insertionSort(std::vector<int> &vec){
 
 //ADD OTHERS HERE
 
+// Quicksort has many functions so they are all under here //
+
+//creates a random set
+int shuffle(std::vector<int> &vec, int size){
+    for(int i = 0; i < size - 1; i++){
+        int j = i + rand() % (size - i);
+        std::swap(vec[i], vec[j]);
+    }
+    return 0;
+}
+
+//instead of using swap function create own to swap pointers
+void swap(int *a, int *b){
+    int t = *a;
+    *a = *b;
+    *b = t;
+}
+
+//Splits vector A into two different parts based on pivot point
+int partition(std::vector<int> &vec, int low, int high){
+    int pivot = vec[high];
+    int i = (low-1);
+    for( int j = low; j <= high - 1; j++){
+        if(vec[j] < pivot){
+            i++;
+            swap(&vec[i], &vec[j]);
+        }
+    }
+    swap(&vec[i+1], &vec[high]);
+    return(i+1);
+}
+
+void Sorter::quicksort(std::vector<int> &vec, int low, int high, int size){
+    if(low < high){
+        //creates a partition for the quicksort to run on
+        int pi = partition(vec, low, high);
+
+        //runs both partitions
+        quicksort(vec, low, pi-1, size);
+        quicksort(vec, pi+1, high, size);
+    }
+}
+
+//simple function to print the vector
+void printArr(std::vector<int> &vec){
+    for (unsigned int i = 0; i < vec.size(); i++){
+        std::cout << vec[i] << ' ';
+    }
+    std::cout << std::endl;
+}
+
+
+int main(){
+    std::vector<int> vec;
+
+    // initialize random seed
+    srand (time(NULL));
+
+    // generates random size for vec (between 0 and 99, currently)
+    int size = rand() % 100;
+
+    for (int i = 0; i < size; i++){
+        // rand() % 100 -> random # between 0 and 99
+        // rand() % 10 -> random # between 0 and 9, etc.
+        vec.push_back(rand() % 100);
+    }
+
+    // prints unsorted array
+    std::cout << "Unsorted: " << '\n';
+    printArr(vec);
+
+    // sorts and prints sorted array
+    int high = size - 1;
+    quicksort(vec, 0, high, size);
+    std::cout << "Sorted: " << '\n';
+    printArr(vec);
+
+}
+
 // PUBLIC
 
 void Sorter::sort(std::string alg){

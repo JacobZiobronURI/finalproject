@@ -15,8 +15,12 @@ class Sort
 
         // sorting algorithms - add your sort functions (+ helper functions) here
         void insertionSort();
-    
-    
+        void quickSort();
+
+        //if we decide to remove bubblesort just remove this
+        void bubbleSort();
+
+
 
     Public:
         void sort(std::string alg); // given user inputted string of sort alg type
