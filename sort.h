@@ -16,7 +16,10 @@ class Sort
         // sorting algorithms - add your sort functions (+ helper functions) here
         void insertionSort();
         void quickSort();
-
+        // quickSort helper functions
+        int shuffle(std::vector<int> &vec, int size);
+        void swap(int *a, int *b);
+        int partition(std::vector<int> &vec, int low, int high);
         //if we decide to remove bubblesort just remove this
         void bubbleSort();
 
