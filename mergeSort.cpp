@@ -47,11 +47,11 @@ std::vector<int> merge(std::vector<int> left, std::vector<int> right)
    return result;
 }
 
-std::vector<int> mergeSort(std::vector<int> m)
+void mergeSort(std::vector<int> &m)
 {
    //if no more elements, return vector
     if (m.size() <= 1)
-      return m;
+      return;
 
    //indicates what part of the list is being worked on
     std::vector<int> left, right, result;
@@ -70,13 +70,11 @@ std::vector<int> mergeSort(std::vector<int> m)
    }
 
    //recursive calls to sort the two lists
-    left = mergeSort(left);
-   right = mergeSort(right);
+   mergeSort(left);
+   mergeSort(right);
 
     //call to merge the two
-   result = merge(left, right);
-
-   return result;
+   m = merge(left, right);
 }
 
 int main()
@@ -98,7 +96,8 @@ int main()
 
    std::cout << "Unsorted: " << '\n';
    print(vec);
+    
    std::cout << "Sorted: " << '\n';
-   vec = mergeSort(vec);
+   mergeSort(vec);
    print(vec);
 }
