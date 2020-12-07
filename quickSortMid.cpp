@@ -26,58 +26,44 @@ int shuffle(std::vector<int> &A, int size){
     return 0;
 }
 
-//instead of using swap function create own to swap pointers
-void swap(int *a, int *b){
-    int t = *a;
-    *a = *b;
-    *b = t;
-}
-
 //Splits vector A into two different parts based on pivot point
 int partition(std::vector<int> &vec, int low, int high){
-    int x = vec[low];
-    int y = vec[(high-low)/2+low];
-    int z = vec[high-1];
-    int i = low -1;
-    int j = high;
-    int count = 0;
-    if(y > x && y < z || y > z && y < x) {
-        x = y;
-    } else if(z > x && z < y || z > y && z < x){
-        x = z;
+    int i = low;
+    int j = high + 1;
+    
+    while(true){
+        // while A[i] < pivot, increase i (low index)
+        while(vec[++i] < vec[low]){
+            if (i == high){break;}
+        }
+        // while A[i] > pivot, decrease j (high index)
+        while(vec[low] < vec[--j]){
+            if (j == low){break;}
+        }
+        // if i and j intersect/cross, break
+        if (i >= j){break;}
+
+        // swap vec at i and j
+        std::swap(vec[i], vec[j]);
     }
-    while(1) {
-        while(vec[j] > x){
-            j--;
-            count++;
-        }
-        while(vec[i] < x){
-            i++;
-            count++;
-        }
-        if(i < j){
-            swap(&vec[i], &vec[j]);
-        } else {
-            return j + 1;
-        }
-    }
+    // swap pivot with vec[j]
+    std::swap(vec[low], vec[j]);
+    return j;
 }
 
 void quickSortMedian(std::vector<int> &vec, int low, int high){
-    int q;
-    int count = 0;
-    count++;
-    if(high - low < 2){
+    if(low >= high){
         return;
     }
-
-    q = partition(vec, low, high);
-    std::cout << "hit partition" << std::endl;
-    quickSortMedian(vec, low, q);
-    quickSortMedian(vec, q, high);
+    
+    int pivot = partition(vec, low, high);
+    
+    // recursively sort each "half" subvector
+    quickSortMedian(vec, low, pivot - 1);
+    quickSortMedian(vec, pivot + 1, high);
 }
 
-//simple function to print the vector
+//simple function to loop through and print the vector's contents
 void printArr(std::vector<int> &vec){
     for (unsigned int i = 0; i < vec.size(); i++){
         std::cout << vec[i] << ' ';
@@ -96,8 +82,7 @@ int main(){
     int size = rand() % 100;
 
     for (int i = 0; i < size; i++){
-        // rand() % 100 -> random # between 0 and 99
-        // rand() % 10 -> random # between 0 and 9, etc.
+        // fills the vec with random ints between 0 and 99
         vec.push_back(rand() % 100);
     }
 
@@ -105,9 +90,8 @@ int main(){
     std::cout << "Unsorted: " << '\n';
     printArr(vec);
 
-    // sorts and prints sorted array
-    int high = size - 1;
-    quickSortMedian(vec, 1, high);
+    // sorts and prints array
+    quickSortMedian(vec, 0, size - 1);
     std::cout << "Sorted: " << '\n';
     printArr(vec);
 
