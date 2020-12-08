@@ -17,9 +17,7 @@ class Sorter
         void insertionSort(std::vector<int> &vec);
 
         // QUICK SORT
-        void quickSort(std::vector<int> &vec, int low, int high);
-        void swap(int *a, int *b);
-        int partitionMid(std::vector<int> &vec, int low, int high);
+        void quickSort(std::vector<int> &vec, int left, int right);
 
         // MERGE SORT
         std::vector<int> merge(std::vector<int> left, std::vector<int> right);
