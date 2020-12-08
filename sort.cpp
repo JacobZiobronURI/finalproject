@@ -78,94 +78,104 @@ void Sorter::insertionSort(std::vector<int> &vec){
     }
 }
 
-// QUICK SORT
-
-// Mid Pivot Partition Implementation
-int Sorter::partitionMid(std::vector<int> &vec, int low, int high){
-    // pivot is chosen as the middle element
-    int pivot = vec[low + (high - low) / 2];
-    
-    while(low <= high){
-        // while vec[low] < pivot, increase low index
-        while(vec[low] < pivot){
-            low++;
-        }
-        // while vec[high] > pivot, decrease high index
-        while(vec[high] > pivot){
-            high--;
-        }
-        // if i and j intersect/cross, break
-        if (low >= high){break;}
-
-        // swap vec at i and j
-        std::swap(vec[low], vec[high]);
-        low++;
-        high--;
-    }
-    // low is now the position of pivot - vec is partitioned around it
-    return low;
-}
-
-void Sorter::quickSort(std::vector<int> &vec, int low, int high){
+// QUICK SORT - Mid Pivot Partition Implementation
+void Sorter::quickSort(std::vector<int> &vec, int left, int right){
     if(low >= high){return;}
+    
+    int i = left;
+    int j = right;
 
-    int pivot = partitionMid(vec, low, high);
+    // partitions vec based on middle pivot position
+    int pivot = vec[(left + right) / 2];
 
-    quickSort(vec, low, pivot - 1);
-    quickSort(vec, pivot + 1, high);
+    while(i <= j){
+        while(vec[i] < pivot){i++;}
+        while(vec[j] > pivot){j--;}
+        if(i <= j){
+            std::swap(vec[i], vec[j]);
+            i++;
+            j--;
+        }
+    }
+
+    // recursively sorts subvectors
+    if (left < j){
+        quickSort(vec, left, j);
+    }
+
+    if(i < right){
+        quickSort(vec, i, right);
+    }
 }
 
 // MERGE SORT
 
+//mergeSort function will work through recursively to establish a left and right subsequence of original sequence
+//inside mergeSort function, it will call on the merge function in order to create a combined, sorted sequence of the two subsequences
 std::vector<int> Sorter::merge(std::vector<int> left, std::vector<int> right)
 {
-   std::vector<int> result;
-   while ((int)left.size() > 0 || (int)right.size() > 0) {
-      if ((int)left.size() > 0 && (int)right.size() > 0) {
-         if ((int)left.front() <= (int)right.front()) {
-            result.push_back((int)left.front());
-            left.erase(left.begin());
+    //result will be finished array where the two subsequences will be combined
+    std::vector<int> result;
+    //loops through while there are still elements in the sequences
+    while ((int)left.size() > 0 || (int)right.size() > 0) {
+        //start here if elements are present in both lists
+        if ((int)left.size() > 0 && (int)right.size() > 0) {
+            //checks which element out of the two lists is smaller or greater
+            if ((int)left.front() <= (int)right.front()) {
+                //places it in appropriate index
+                result.push_back((int)left.front());
+                //removes elements that have been looked at/sorted
+                //begin() returns an iterator pointing to the first element of the vector container
+                left.erase(left.begin());
+            }else{   //if there are no more elements present in the left subsequence, move onto putting right sequence elements into result vector
+                 result.push_back((int)right.front());
+                 right.erase(right.begin());
          }
-   else {
-            result.push_back((int)right.front());
-            right.erase(right.begin());
-         }
-      }  else if ((int)left.size() > 0) {
+
+      //end of first if statement conditional
+
+        }else if ((int)left.size() > 0) { //start here if right sequence contains no elements
             for (int i = 0; i < (int)left.size(); i++)
-               result.push_back(left[i]);
+                result.push_back(left[i]);
             break;
-      }  else if ((int)right.size() > 0) {
+        }else if ((int)right.size() > 0) { //vice versa
             for (int i = 0; i < (int)right.size(); i++)
-               result.push_back(right[i]);
+                result.push_back(right[i]);
             break;
-      }
-   }
-   return result;
+        }
+    }
+    //return finished vector
+    return result;
 }
 
 void Sorter::mergeSort(std::vector<int> &m)
 {
-   if (m.size() <= 1)
-      return;
+    //if no more elements, return vector
+    if (m.size() <= 1)
+        return;
 
-   std::vector<int> left, right, result;
-   int middle = ((int)m.size()+ 1) / 2;
+    //indicates what part of the list is being worked on
+    std::vector<int> left, right, result;
 
-   // splits vector m into two subvectors
-   for (int i = 0; i < middle; i++) {
-      left.push_back(m[i]);
-   }
+    //finds middle spot of the vector
+    int middle = ((int)m.size()+ 1) / 2;
 
-   for (int i = middle; i < (int)m.size(); i++) {
-      right.push_back(m[i]);
-   }
-   
-   // recursively splits vector in half, then merges them back
-   mergeSort(left);
-   mergeSort(right);
-    
-   // merge function is doing the work of sorting 
-   m = merge(left, right);
+    //loops through to create a left list
+    for (int i = 0; i < middle; i++) {
+        left.push_back(m[i]);
+    }
+
+    //loops through to create a right list
+    for (int i = middle; i < (int)m.size(); i++) {
+        right.push_back(m[i]);
+    }
+
+    //recursive calls to establish what will be in the two lists
+    mergeSort(left);
+    mergeSort(right);
+
+    //call to merge the two
+    m = merge(left, right);
 }
 
 // RADIX SORT
