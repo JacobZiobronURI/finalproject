@@ -19,42 +19,34 @@
       So, the combine step in quicksort does virtually nothing.
 */
 
-//creates a random set
-int shuffle(std::vector<int> &vec, int size){
-    for(int i = 0; i < size - 1; i++){
-        int j = i + rand() % (size - i);
-        std::swap(vec[i], vec[j]);
-    }
-    return 0;
-}
-
 //Splits vector A into two different parts based on pivot point
-//pivot is based on the middle instead of a high/low
-int partition(std::vector<int> &vec, int low, int high){
-    int i = low;
-    int j = high + 1;
-
-    while(true){
-        // while A[i] < pivot, increase i (low index)
-        while(vec[++i] < vec[low]){
-            if (i == high){break;}
+// Mid Pivot Partition Implementation
+int Sorter::partitionMid(std::vector<int> &vec, int low, int high){
+    // pivot is chosen as the middle element
+    int pivot = vec[low + (high - low) / 2];
+    
+    while(low <= high){
+        // while vec[low] < pivot, increase low index
+        while(vec[low] < pivot){
+            low++;
         }
-        // while A[i] > pivot, decrease j (high index)
-        while(vec[low] < vec[--j]){
-            if (j == low){break;}
+        // while vec[high] > pivot, decrease high index
+        while(vec[high] > pivot){
+            high--;
         }
         // if i and j intersect/cross, break
-        if (i >= j){break;}
+        if (low >= high){break;}
 
         // swap vec at i and j
-        std::swap(vec[i], vec[j]);
+        std::swap(vec[low], vec[high]);
+        low++;
+        high--;
     }
-    // swap pivot with vec[j]
-    std::swap(vec[low], vec[j]);
-    return j;
+    // low is now the position of pivot - vec is partitioned around it
+    return low;
 }
 
-void quickSortMedian(std::vector<int> &vec, int low, int high){
+void quickSort(std::vector<int> &vec, int low, int high){
     if(low >= high){
         return;
     }
@@ -94,7 +86,7 @@ int main(){
     printArr(vec);
 
     // sorts and prints array
-    quickSortMedian(vec, 0, size - 1);
+    quickSort(vec, 0, size - 1);
     std::cout << "Sorted: " << '\n';
     printArr(vec);
 
