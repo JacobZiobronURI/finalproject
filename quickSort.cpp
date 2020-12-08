@@ -19,43 +19,32 @@
       So, the combine step in quicksort does virtually nothing.
 */
 
-//Splits vector A into two different parts based on pivot point
-// Mid Pivot Partition Implementation
-int Sorter::partitionMid(std::vector<int> &vec, int low, int high){
-    // pivot is chosen as the middle element
-    int pivot = vec[low + (high - low) / 2];
-    
-    while(low <= high){
-        // while vec[low] < pivot, increase low index
-        while(vec[low] < pivot){
-            low++;
-        }
-        // while vec[high] > pivot, decrease high index
-        while(vec[high] > pivot){
-            high--;
-        }
-        // if i and j intersect/cross, break
-        if (low >= high){break;}
+void quickSort(std::vector<int> &vec, int left, int right) {
+    int i = left;
+    int j = right;
 
-        // swap vec at i and j
-        std::swap(vec[low], vec[high]);
-        low++;
-        high--;
-    }
-    // low is now the position of pivot - vec is partitioned around it
-    return low;
-}
+    int pivot = vec[(left + right) / 2];
 
-void quickSort(std::vector<int> &vec, int low, int high){
-    if(low >= high){
-        return;
+    // partitions vec based on middle pivot position
+
+    while(i <= j){
+        while(vec[i] < pivot){i++;}
+        while(vec[j] > pivot){j--;}
+        if(i <= j){
+            std::swap(vec[i], vec[j]);
+            i++;
+            j--;
+        }
     }
 
-    int pivot = partition(vec, low, high);
+    // recursively sorts subvectors
+    if (left < j){
+        quickSort(vec, left, j);
+    }
 
-    // recursively sort each "half" subvector
-    quickSortMedian(vec, low, pivot - 1);
-    quickSortMedian(vec, pivot + 1, high);
+    if(i < right){
+        quickSort(vec, i, right);
+    }
 }
 
 //simple function to loop through and print the vector's contents
