@@ -4,14 +4,14 @@ Sorting algorithms take an input sequence of data that can vary in length and or
 
 ## How to Run:
 
-Files needed: '''sort.cpp''', '''sort.h''', and '''main.cpp'''
+Files needed: ```sort.cpp```, ```sort.h```, and ```main.cpp```
 
-Compile with '''g++ -Wall main.cpp sort.cpp ./sorter'''
+Compile with ```g++ -Wall main.cpp sort.cpp ./sorter```
 
-Run with '''./sorter <sortAlg>'''
-  sortAlg: "insert", "radix", "merge", or "quick"
+Run with ```./sorter <sortAlg>```
+  sortAlg: ```insert``` for insertion sort,```radix``` for radix sort, ```merge``` for mergesort, or ```quick``` for quicksort
 
-The program will write data to csv file named '''<sortAlg>Sort.csv''' corresponding to the user-inputted algorithm  
+The program will write data to csv file named ```<sortAlg>Sort.csv``` corresponding to the user-inputted algorithm  
 
 
 
