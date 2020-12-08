@@ -80,7 +80,7 @@ void Sorter::insertionSort(std::vector<int> &vec){
 
 // QUICK SORT - Mid Pivot Partition Implementation
 void Sorter::quickSort(std::vector<int> &vec, int left, int right){
-    if(low >= high){return;}
+    if(left >= right){return;}
     
     int i = left;
     int j = right;
@@ -251,7 +251,7 @@ void Sorter::specificSeqSort(std::ofstream &of, std::string seq, std::string alg
         }else if(seq == "Random"){
             generateRandom(vec, i);
         }else{//seq == "Partial"
-            generatePartial(vec, i);
+            generatePartialSort(vec, i);
         }
 
         start = clock();
