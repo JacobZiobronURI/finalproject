@@ -18,33 +18,46 @@ void print(std::vector<int> v)
   std::cout << '\n';
 }
 
+//mergeSort function will work through recursively to establish a left and right subsequence of original sequence
+//inside mergeSort function, it will call on the merge function in order to create a combined, sorted sequence of the two subsequences 
 std::vector<int> merge(std::vector<int> left, std::vector<int> right)
 {
-   std::vector<int> result;
+   //result will be finished array where the two subsequences will be combined
+    std::vector<int> result;
+    //loops through while there are still elements in the sequences
    while ((int)left.size() > 0 || (int)right.size() > 0) {
+       //start here if elements are present in both lists
       if ((int)left.size() > 0 && (int)right.size() > 0) {
           //checks which element out of the two lists is smaller or greater
          if ((int)left.front() <= (int)right.front()) {
              //places it in appropriate index
             result.push_back((int)left.front());
-             //erases elements that have been looked at
+             //removes elements that have been looked at/sorted
+             //begin() returns an iterator pointing to the first element of the vector container
             left.erase(left.begin());
          }
-   else {
-            result.push_back((int)right.front());
-            right.erase(right.begin());
-         }
-      }  else if ((int)left.size() > 0) { //if right list is already finished continue looking at left
+          else {   //if there are no more elements present in the left subsequence, move onto putting right sequence elements into result vector
+                    right.erase(right.begin());
+          }
+          
+      //end of first if statement conditional 
+          
+      }  
+      
+       else if ((int)left.size() > 0) { //start here if right sequence contains no elements
             for (int i = 0; i < (int)left.size(); i++)
                result.push_back(left[i]);
             break;
-      }  else if ((int)right.size() > 0) { //vice versa
+      }  
+       
+       else if ((int)right.size() > 0) { //vice versa
             for (int i = 0; i < (int)right.size(); i++)
                result.push_back(right[i]);
             break;
       }
    }
-   return result;
+   //return finished vector
+    return result;
 }
 
 void mergeSort(std::vector<int> &m)
@@ -59,17 +72,17 @@ void mergeSort(std::vector<int> &m)
     //finds middle spot of the vector
    int middle = ((int)m.size()+ 1) / 2;
 
-   //loops through to create a sorted left list
+   //loops through to create a left list
     for (int i = 0; i < middle; i++) {
       left.push_back(m[i]);
    }
 
-   //loops through to create a sorted right list
+   //loops through to create a right list
     for (int i = middle; i < (int)m.size(); i++) {
       right.push_back(m[i]);
    }
 
-   //recursive calls to sort the two lists
+   //recursive calls to establish what will be in the two lists
    mergeSort(left);
    mergeSort(right);
 
