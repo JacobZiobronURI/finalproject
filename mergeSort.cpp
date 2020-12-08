@@ -35,22 +35,18 @@ std::vector<int> merge(std::vector<int> left, std::vector<int> right)
              //removes elements that have been looked at/sorted
              //begin() returns an iterator pointing to the first element of the vector container
             left.erase(left.begin());
+         }else{   //if there are no more elements present in the left subsequence, move onto putting right sequence elements into result vector
+             result.push_back((int)right.front());
+             right.erase(right.begin());
          }
-          else {   //if there are no more elements present in the left subsequence, move onto putting right sequence elements into result vector
-                    right.erase(right.begin());
-          }
           
       //end of first if statement conditional 
           
-      }  
-      
-       else if ((int)left.size() > 0) { //start here if right sequence contains no elements
+      }else if ((int)left.size() > 0) { //start here if right sequence contains no elements
             for (int i = 0; i < (int)left.size(); i++)
                result.push_back(left[i]);
             break;
-      }  
-       
-       else if ((int)right.size() > 0) { //vice versa
+      }else if ((int)right.size() > 0) { //vice versa
             for (int i = 0; i < (int)right.size(); i++)
                result.push_back(right[i]);
             break;
