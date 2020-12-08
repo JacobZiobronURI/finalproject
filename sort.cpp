@@ -89,6 +89,8 @@ int Sorter::shuffle(std::vector<int> &vec, int size){
 }
 
 //instead of using swap function created own to swap pointers
+//with vectors the normal swap function CANNOT be used; it doesn't work
+//so a swap function is needed
 void Sorter::swap(int *a, int *b){
     int t = *a;
     *a = *b;
