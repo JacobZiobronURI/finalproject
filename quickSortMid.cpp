@@ -6,6 +6,8 @@
 /* How it works:
     - DIVIDE & CONQUER (like mergeSort):
     - repeatedly (recursively) picks an element/index to be the "pivot"
+        -For choosing the middle it makes the algorithm more efficient
+         and is much better than picking a high or low pivot position
     - and partition the array/vector/list elements around the pivot
         - (meaning) move lower or equal elements on left of pivot, higher ones on right
     - after the recursions ends, the array will inevitable be sorted
@@ -18,19 +20,20 @@
 */
 
 //creates a random set
-int shuffle(std::vector<int> &A, int size){
+int shuffle(std::vector<int> &vec, int size){
     for(int i = 0; i < size - 1; i++){
         int j = i + rand() % (size - i);
-        std::swap(A[i], A[j]);
+        std::swap(vec[i], vec[j]);
     }
     return 0;
 }
 
 //Splits vector A into two different parts based on pivot point
+//pivot is based on the middle instead of a high/low
 int partition(std::vector<int> &vec, int low, int high){
     int i = low;
     int j = high + 1;
-    
+
     while(true){
         // while A[i] < pivot, increase i (low index)
         while(vec[++i] < vec[low]){
@@ -55,9 +58,9 @@ void quickSortMedian(std::vector<int> &vec, int low, int high){
     if(low >= high){
         return;
     }
-    
+
     int pivot = partition(vec, low, high);
-    
+
     // recursively sort each "half" subvector
     quickSortMedian(vec, low, pivot - 1);
     quickSortMedian(vec, pivot + 1, high);
