@@ -34,14 +34,14 @@ int main(){
 
     // sorts and prints sorted array
     insertionSort(vec);
-
     std::cout << "Sorted: " << '\n';
     printArr(vec);
 }
 
 void insertionSort(std::vector<int> &vec){
-    int temp; //
+    int temp; 
     int i, j;
+    
     // scans array left to right
     // grows "sorted" part of vec
     for (i = 1; i < (int)vec.size(); i++){
