@@ -2,7 +2,7 @@
 
 needed files: sort.cpp sort.h and main.cpp
 
-compile with "g++ -Wall main.cpp sort.cpp ./sort"
+compile with "g++ -Wall main.cpp sort.cpp -o sort"
 
 run with "./sort <sortAlg>"
   sortAlg: "insert", "radix", "merge", or "quick"
