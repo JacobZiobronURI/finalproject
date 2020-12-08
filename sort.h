@@ -13,16 +13,30 @@ class Sort
         void generateRandom(std::vector<int> &vec, int length);
         void generatePartialSort(std::vector<int> &vec, int length);
 
-        // sorting algorithms - add your sort functions (+ helper functions) here
+        // INSERTION SORT
         void insertionSort(std::vector<int> &vec);
-        void quickSort(std::vector<int> &vec, int low, int high, int size);
-        // quickSort helper functions
-        int shuffle(std::vector<int> &vec, int size);
+
+        // QUICK SORT
+        void quickSort(std::vector<int> &vec, int low, int high);
         void swap(int *a, int *b);
-        int partition(std::vector<int> &vec, int low, int high);
+        int partitionMid(std::vector<int> &vec, int low, int high);
+
+        // MERGE SORT
+        std::vector<int> merge(std::vector<int> left, std::vector<int> right);
+        void mergeSort(std::vector<int> &m);
+
+        // RADIX SORT
+        void radixSort(std::vector<int> &vec);
+        int findMax(std::vector<int> &vec);
+        void countSort(std::vector<int> &vec, int exp);
+
+        // sorts a specific seq type and alg and writes to given file
+        void specificSeqSort(std::ofstream &of, std::string seq, std::string alg, std::vector<int> &vec);
 
     public:
-        void sort(std::string alg); // given user inputted string of sort alg type
+        // given user-inputted sort alg, function writes data to csv for all sequence sizes and types
+        void sort(std::string alg); 
+
 
 };
 
