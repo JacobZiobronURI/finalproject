@@ -30,12 +30,16 @@ class Sorter
 
         // sorts a specific seq type and alg and writes to given file
         void specificSeqSort(std::ofstream &of, std::string seq, std::string alg, std::vector<int> &vec);
-
+        
+        // prints given function
+        void printArr(std::vector<int> &vec);
+    
     public:
         // given user-inputted sort alg, function writes data to csv for all sequence sizes and types
         void sort(std::string alg); 
-
-
+    
+        // function to call to show sort algs working on random sequence with length 30
+        void example(std::string alg);
 };
 
 #endif
