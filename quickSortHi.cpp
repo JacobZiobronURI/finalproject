@@ -17,23 +17,6 @@
       So, the combine step in quicksort does virtually nothing.
 */
 
-//creates a random set
-int shuffle(std::vector<int> &A, int size){
-    for(int i = 0; i < size - 1; i++){
-        int j = i + rand() % (size - i);
-        std::swap(A[i], A[j]);
-    }
-    return 0;
-}
-
-//instead of using swap function create own to swap pointers
-//to work with vectors need to use pointers, otherwise it cannot work
-void swap(int *a, int *b){
-    int t = *a;
-    *a = *b;
-    *b = t;
-}
-
 //Splits vector vec into two different parts based on pivot point
 int partition(std::vector<int> &vec, int low, int high){
     int pivot = vec[high];
@@ -41,10 +24,10 @@ int partition(std::vector<int> &vec, int low, int high){
     for( int j = low; j <= high - 1; j++){
         if(vec[j] < pivot){
             i++;
-            swap(&vec[i], &vec[j]);
+            std::swap(vec[i], vec[j]);
         }
     }
-    swap(&vec[i+1], &vec[high]);
+    std::swap(vec[i+1], vec[high]);
     return(i+1);
 }
 
