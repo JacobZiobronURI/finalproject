@@ -39,7 +39,7 @@ class Sorter
         void sort(std::string alg); 
     
         // function to call to show sort algs working on random sequence with length 30
-        void example(std::string alg);
+        void example(std::string alg, std::string seq);
 };
 
 #endif
