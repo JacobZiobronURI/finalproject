@@ -23,7 +23,7 @@ void quickSort(std::vector<int> &vec, int left, int right) {
     int i = left;
     int j = right;
 
-    int pivot = vec[(left + right) / 2];
+    int pivot = vec[left + ((right - left) / 2)];
 
     // partitions vec based on middle pivot position
 
