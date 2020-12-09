@@ -28,9 +28,9 @@ void Sorter::generateReverse(std::vector<int> &vec, int length){
 
 void Sorter::generateRandom(std::vector<int> &vec, int length){
     vec.clear();
+    srand (time(NULL));
     for (int i = 0; i < length; i++){
         // rand() % 100 -> random # between 0 and 99
-        // rand() % 10 -> random # between 0 and 9, etc.
         vec.push_back(rand() % 100);
     }
 }
@@ -42,15 +42,11 @@ void Sorter::generatePartialSort(std::vector<int> &vec, int length){
 
     // generate completely sorted array
     generateSorted(vec, length);
-    //int temp;
     int index;
 
-    // loop to swap % of sorted vec - 10% currently
+    // loop to swap % of sorted vec - ~10% currently
     for (int i = 0; i < (length / 10); i++){
         index = rand() % length;
-        // temp = vec[index];
-        // vec[index] = vec[index + 1];
-        // vec[index + 1] = temp;
         std::swap(vec[index], vec[index + 1]);
     }
 }
@@ -119,15 +115,20 @@ std::vector<int> Sorter::merge(std::vector<int> left, std::vector<int> right)
     
     //loops through while there are still elements in the sequences
     while ((int)left.size() > 0 || (int)right.size() > 0) {
+        
         //start here if elements are present in both lists
         if ((int)left.size() > 0 && (int)right.size() > 0) {
+            
             //checks which element out of the two lists is smaller or greater
             if ((int)left.front() <= (int)right.front()) {
+                
                 //places it in appropriate index
                 result.push_back((int)left.front());
+                
                 //removes elements that have been looked at/sorted
                 //begin() returns an iterator pointing to the first element of the vector container
                 left.erase(left.begin());
+                
             }else{   //if there are no more elements present in the left subsequence, move onto putting right sequence elements into result vector
                 result.push_back((int)right.front());
                 right.erase(right.begin());
@@ -139,6 +140,7 @@ std::vector<int> Sorter::merge(std::vector<int> left, std::vector<int> right)
             for (int i = 0; i < (int)left.size(); i++)
                 result.push_back(left[i]);
             break;
+            
         }else if ((int)right.size() > 0) { //vice versa
             for (int i = 0; i < (int)right.size(); i++)
                 result.push_back(right[i]);
@@ -225,8 +227,7 @@ void Sorter::countSort(std::vector<int> &vec, int digit){
 }
 
 // The main part of radixSort function to that sorts vec using countSort
-void Sorter::radixSort(std::vector<int> &vec){
-    if (vec.empty()){return;}
+void Sorter::radixSort(std::vector<int> &vec){    
     // Find the maximum number to know number of digits
     int max = findMax(vec);
 
@@ -276,10 +277,19 @@ void Sorter::specificSeqSort(std::ofstream &of, std::string seq, std::string alg
     of << "\n";
 }
 
-// PUBLIC
+void Sorter::printArr(std::vector<int> &vec){
+    for (unsigned int i = 0; i < vec.size(); i++){
+        std::cout << vec[i] << ' ';
+    }
+    std::cout << std::endl;
+}
+
+/*
+    PUBLIC
+*/
 
 void Sorter::sort(std::string alg){
-    // main will call this method only, and this will run user-specified algorithm with all 4 seq types and write to csv
+    // this will run user-specified algorithm with all 4 seq types and write to csv
     // alg: "insert", "radix", "merge", "quickHi", "quickMid"
     
     // checks if input is valid
@@ -310,4 +320,40 @@ void Sorter::sort(std::string alg){
     of.close();
 }
 
+void Sorter::example(std::string alg){
+    // checks for correct input
+    if (alg != "insertEx" && alg != "radixEx" && alg != "mergeEx" && alg != "quickEx"){
+        std::cout << "Invalid Input. For instructions, run \"./sort\"\n";
+        return;
+    }
 
+    // initialize necessary variables
+    std::vector<int> vec;
+    clock_t start, end;
+    double execTime;
+
+    // create a random vector as an example
+    generateRandom(vec, 30);
+
+    // print unsorted array
+    std::cout << "Unsorted: ";
+    printArr(vec);
+
+    // start clock & run correct algorithm
+    start = clock();
+
+    if (alg == "insertEx"){insertionSort(vec);}
+    else if (alg == "mergeEx"){mergeSort(vec);}
+    else if (alg == "quickEx"){quickSort(vec, 0, 29);}
+    else if (alg == "radixEx"){radixSort(vec);}
+
+    end = clock();
+
+    // print sorted array
+    std::cout << "Sorted: ";
+    printArr(vec);
+
+    // calculate and print execTime
+    execTime = double (end - start) / double (CLOCKS_PER_SEC / 1000);
+    std::cout << "Execution time: " << execTime << " ms\n";
+}
