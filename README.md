@@ -11,13 +11,23 @@ Compile with the following command:
 g++ -Wall main.cpp sort.cpp ./sort
 ```
 
-Run with:
+### To create a CSV file, run with:
 ```javascript
-./sort <sortAlg>
-  <sortAlg>: "insert" for insertion sort, "radix" for radix sort, "merge" for mergesort, or "quick" for quicksort
+./sort <sortName>
+  <sortName>: "insert" for insertion sort, "radix" for radix sort, "merge" for mergesort, or "quick" for quicksort
 ```
 
-The program will write data to csv file named ```<sortAlg>Sort.csv``` corresponding to the user-inputted algorithm  
+This will write data to csv file named ```<sortAlg>Sort.csv``` corresponding to the user-inputted algorithm  
+
+### To see an example, run with:
+```javascript
+./sort <sortNameEx> <seqType>
+  <sortName>: "insertEx" for insertion sort, "radixEx" for radix sort, "mergeEx" for mergesort, or "quickEx" for quicksort
+  <seqType>: "sorted" for sorted sequence, "reverse" for a reverse sorted sequence, "random" for a random sequence, "partial" for a partially sorted sequence (10% unsorted)
+```
+
+This will print a sequence of length 30 and of type given by user, run the user-inputted algorithm, and print the sorted sequence as well as the execution time in milliseconds
+
 
 
 
