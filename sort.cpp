@@ -86,7 +86,7 @@ void Sorter::quickSort(std::vector<int> &vec, int left, int right){
     int j = right;
 
     // partitions vec based on middle pivot position
-    int pivot = vec[(left + right) / 2];
+    int pivot = vec[left + ((right - left) / 2)];
 
     while(i <= j){
         while(vec[i] < pivot){i++;}
@@ -116,6 +116,7 @@ std::vector<int> Sorter::merge(std::vector<int> left, std::vector<int> right)
 {
     //result will be finished array where the two subsequences will be combined
     std::vector<int> result;
+    
     //loops through while there are still elements in the sequences
     while ((int)left.size() > 0 || (int)right.size() > 0) {
         //start here if elements are present in both lists
@@ -128,8 +129,8 @@ std::vector<int> Sorter::merge(std::vector<int> left, std::vector<int> right)
                 //begin() returns an iterator pointing to the first element of the vector container
                 left.erase(left.begin());
             }else{   //if there are no more elements present in the left subsequence, move onto putting right sequence elements into result vector
-                 result.push_back((int)right.front());
-                 right.erase(right.begin());
+                result.push_back((int)right.front());
+                right.erase(right.begin());
          }
 
       //end of first if statement conditional
@@ -144,6 +145,7 @@ std::vector<int> Sorter::merge(std::vector<int> left, std::vector<int> right)
             break;
         }
     }
+    
     //return finished vector
     return result;
 }
@@ -224,6 +226,7 @@ void Sorter::countSort(std::vector<int> &vec, int digit){
 
 // The main part of radixSort function to that sorts vec using countSort
 void Sorter::radixSort(std::vector<int> &vec){
+    if (vec.empty()){return;}
     // Find the maximum number to know number of digits
     int max = findMax(vec);
 
