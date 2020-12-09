@@ -326,14 +326,27 @@ void Sorter::example(std::string alg){
         std::cout << "Invalid Input. For instructions, run \"./sort\"\n";
         return;
     }
+    if (seq != "sorted" && seq != "reverse" && seq != "random" && seq != "partial"){
+        std::cout << "Invalid Input. For instructions, run \"./sort\"\n";
+        return;
+    }
 
     // initialize necessary variables
     std::vector<int> vec;
     clock_t start, end;
     double execTime;
+    int size = 30;
 
-    // create a random vector as an example
-    generateRandom(vec, 30);
+    // create vector as an example
+    if (seq == "sorted"){
+        generateSorted(vec, size);
+    }else if(seq == "reverse"){
+        generateReverse(vec, size);
+    }else if(seq == "random"){
+        generateRandom(vec, size);
+    }else{//seq == "partial"
+        generatePartialSort(vec, size);
+    }
 
     // print unsorted array
     std::cout << "Unsorted: ";
