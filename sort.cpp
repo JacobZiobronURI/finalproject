@@ -320,7 +320,7 @@ void Sorter::sort(std::string alg){
     of.close();
 }
 
-void Sorter::example(std::string alg){
+void Sorter::example(std::string alg, std::string seq){
     // checks for correct input
     if (alg != "insertEx" && alg != "radixEx" && alg != "mergeEx" && alg != "quickEx"){
         std::cout << "Invalid Input. For instructions, run \"./sort\"\n";
